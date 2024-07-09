@@ -1,17 +1,13 @@
 function speak() {
-    input = document.getElementById("input").value
-
-    roevered = roeversprog(input)
-    document.getElementById("output").innerHTML = roevered;
-
+    const roevered = document.getElementById("output").innerHTML;
     const utterance = new SpeechSynthesisUtterance(roevered);
     const voices = speechSynthesis.getVoices();
     utterance.voice = voices[0];
     speechSynthesis.speak(utterance);
-
 }
 
-function roeversprog(ord) {
+function roeversprog() {
+    ord = document.getElementById("input").value
     const consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
     let result = ""
 
@@ -23,5 +19,5 @@ function roeversprog(ord) {
         }
     }
 
-    return result
+    document.getElementById("output").innerHTML = result;
 }
